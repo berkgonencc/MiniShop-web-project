@@ -5,8 +5,7 @@ import {
   ToastrMessageType,
   ToastrPosition,
 } from './services/ui/custom-toastr.service';
-import { MessageType } from './services/admin/alertify.service';
-declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
