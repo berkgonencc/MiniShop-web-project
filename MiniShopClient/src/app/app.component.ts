@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import {
-  CustomToastrService,
-  ToastrMessageType,
-  ToastrPosition,
-} from './services/ui/custom-toastr.service';
+
 
 @Component({
   selector: 'app-root',
@@ -13,10 +8,5 @@ import {
 })
 export class AppComponent {
   title = 'MiniShopClient';
-  constructor(private toastrService: CustomToastrService) {
-    toastrService.message('Hello', 'berk', {
-      messageType: ToastrMessageType.Success,
-      position: ToastrPosition.BottomLeft,
-    });
-  }
+
 }
