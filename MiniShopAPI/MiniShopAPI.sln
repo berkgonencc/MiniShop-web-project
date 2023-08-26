@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4623DE7B-B1FC-45C2-97F6-F0F8A0840589}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopAPI.Domain", "Core\MiniShopAPI.Domain\MiniShopAPI.Domain.csproj", "{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopAPI.Application", "Core\MiniShopAPI.Application\MiniShopAPI.Application.csproj", "{B8A6BC8B-D207-4A87-9151-66CFCE583D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{74B7AEAA-8585-4B84-855E-AB55B2691461}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopAPI.Infrastructure", "Infrastructure\MiniShopAPI.Infrastructure\MiniShopAPI.Infrastructure.csproj", "{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopAPI.Persistence", "Infrastructure\MiniShopAPI.Persistence\MiniShopAPI.Persistence.csproj", "{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D2F99618-C263-47CB-A0E5-96FBE7B66277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniShopAPI.API", "Presentation\MiniShopAPI.API\MiniShopAPI.API.csproj", "{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A6BC8B-D207-4A87-9151-66CFCE583D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A6BC8B-D207-4A87-9151-66CFCE583D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A6BC8B-D207-4A87-9151-66CFCE583D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A6BC8B-D207-4A87-9151-66CFCE583D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D4C2D84-8995-4230-9296-C49E3F73970D}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D9E61F6D-B38E-4903-AA0C-1FEE84B0EE9A} = {4623DE7B-B1FC-45C2-97F6-F0F8A0840589}
+		{B8A6BC8B-D207-4A87-9151-66CFCE583D56} = {4623DE7B-B1FC-45C2-97F6-F0F8A0840589}
+		{3148DEF2-96D2-4EAC-BB0E-6E0FC1908921} = {74B7AEAA-8585-4B84-855E-AB55B2691461}
+		{50BFCEBC-9A9A-475A-8D98-CB9F93CD739D} = {74B7AEAA-8585-4B84-855E-AB55B2691461}
+		{2E43C3BC-7FF0-4E3C-80C9-F2F7EC2F1299} = {D2F99618-C263-47CB-A0E5-96FBE7B66277}
+	EndGlobalSection
+EndGlobal
