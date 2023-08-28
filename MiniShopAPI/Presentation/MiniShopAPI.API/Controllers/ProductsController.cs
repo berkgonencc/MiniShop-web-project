@@ -30,12 +30,9 @@ namespace MiniShopAPI.API.Controllers
         }
 
         [HttpGet]
-        public async Task Get()
+        public async Task<IActionResult> Get()
         {
-            Order order = await _orderReadRepository.GetByIdAsync("b18c1cf5-dc8a-4292-9905-005e2f9271f8");
-            order.Address = "Adana";
-            await _orderWriteRepository.SaveAsync();
-
+            return Ok("merhaba");
         }
 
     }
