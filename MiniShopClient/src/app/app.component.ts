@@ -10,6 +10,3 @@ export class AppComponent {
   title = 'MiniShopClient';
 }
 
-$.get('https://localhost:7102/api/products', data => {
-  console.log(data);
-});

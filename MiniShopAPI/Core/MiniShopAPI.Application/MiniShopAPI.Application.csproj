@@ -14,12 +14,16 @@
     <None Remove="Repositories\Customer\" />
     <None Remove="Repositories\Order\" />
     <None Remove="Repositories\Product\" />
+    <None Remove="ViewModels\" />
+    <None Remove="ViewModels\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Repositories\Customer\" />
     <Folder Include="Repositories\Order\" />
     <Folder Include="Repositories\Product\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Products\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
