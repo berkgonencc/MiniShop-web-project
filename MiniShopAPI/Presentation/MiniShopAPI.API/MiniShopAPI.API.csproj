@@ -24,6 +24,9 @@
     <ProjectReference Include="..\..\Infrastructure\MiniShopAPI.Persistence\MiniShopAPI.Persistence.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\MiniShopAPI.Infrastructure\MiniShopAPI.Infrastructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\" />
