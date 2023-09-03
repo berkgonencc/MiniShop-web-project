@@ -7,6 +7,7 @@ import {
   MessageType,
   Position,
 } from 'src/app/services/admin/alertify.service';
+import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
 @Component({
@@ -24,8 +25,13 @@ export class CreateComponent extends BaseComponent implements OnInit {
   }
   ngOnInit(): void {}
 
-  @Output() createdProduct : EventEmitter<Create_Product> = new EventEmitter();
-
+  @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter();
+  @Output() fileUploadOptions: Partial<FileUploadOptions> = {
+    action:"upload",
+    controller:"products",
+    explanation:"choose image...",
+    isAdminPage:true,
+  };
   create(
     name: HTMLInputElement,
     stock: HTMLInputElement,
@@ -36,7 +42,6 @@ export class CreateComponent extends BaseComponent implements OnInit {
     create_product.name = name.value;
     create_product.price = parseFloat(price.value);
     create_product.stock = parseInt(stock.value);
-
 
     this.productService.create(
       create_product,
