@@ -1,5 +1,6 @@
 ﻿using FluentValidation.AspNetCore;
 using MiniShopAPI.Application.Validators.Products;
+using MiniShopAPI.Infrastructure;
 using MiniShopAPI.Infrastructure.Filters;
 using MiniShopAPI.Persistence;
 
@@ -7,6 +8,7 @@ using MiniShopAPI.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
 
