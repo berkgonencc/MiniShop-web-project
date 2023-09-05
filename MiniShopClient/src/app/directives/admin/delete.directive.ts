@@ -20,6 +20,7 @@ import {
   MessageType,
   Position,
 } from 'src/app/services/admin/alertify.service';
+import { DialogService } from 'src/app/services/common/dialog.service';
 import { HttpClientService } from 'src/app/services/common/http-client.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
@@ -35,7 +36,8 @@ export class DeleteDirective {
     private httpClientService: HttpClientService,
     private spinner: NgxSpinnerService,
     private alertify: AlertifyService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dialogService: DialogService
   ) {
     const img = _renderer.createElement('img');
     img.setAttribute('src', '../../../../../assets/delete.png');
@@ -51,54 +53,61 @@ export class DeleteDirective {
 
   @HostListener('click')
   async onclick() {
-    this.openDialog(async () => {
-      this.spinner.show(SpinnerType.BallAtom);
-      const td: HTMLTableCellElement = this.element.nativeElement;
-      this.httpClientService
-        .delete(
-          {
-            controller: this.controller,
-          },
-          this.id
-        )
-        .subscribe((data) => {
-          $(td.parentElement).animate(
+    this.dialogService.openDialog({
+      componentType: DeleteDialogComponent,
+      data: DeleteState.Yes,
+      afterClosed: async () => {
+        this.spinner.show(SpinnerType.BallAtom);
+        const td: HTMLTableCellElement = this.element.nativeElement;
+        this.httpClientService
+          .delete(
             {
-              opacity: 0,
-              left: '+=50',
-              height: 'toogle',
+              controller: this.controller,
             },
-            700,
-            () => {
-              this.callback.emit();
-              this.alertify.message('The product successfully deleted.', {
+            this.id
+          )
+          .subscribe(
+            (data) => {
+              $(td.parentElement).animate(
+                {
+                  opacity: 0,
+                  left: '+=50',
+                  height: 'toogle',
+                },
+                700,
+                () => {
+                  this.callback.emit();
+                  this.alertify.message('The product successfully deleted.', {
+                    dismissOthers: true,
+                    messageType: MessageType.Success,
+                    position: Position.TopCenter,
+                  });
+                }
+              );
+            },
+            (errorResponse: HttpErrorResponse) => {
+              this.spinner.hide(SpinnerType.BallAtom);
+              this.alertify.message('Error occured!.', {
                 dismissOthers: true,
-                messageType: MessageType.Success,
+                messageType: MessageType.Error,
                 position: Position.TopCenter,
               });
             }
           );
-        }, (errorResponse: HttpErrorResponse) => {
-          this.spinner.hide(SpinnerType.BallAtom);
-          this.alertify.message('Error occured!.', {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter,
-          });
-        });
+      },
     });
   }
 
-  openDialog(afterClosed: any): void {
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: '250px',
-      data: DeleteState.Yes,
-    });
+  // openDialog(afterClosed: any): void {
+  //   const dialogRef = this.dialog.open(DeleteDialogComponent, {
+  //     width: '250px',
+  //     data: DeleteState.Yes,
+  //   });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result == DeleteState.Yes) {
-        afterClosed();
-      }
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (result == DeleteState.Yes) {
+  //       afterClosed();
+  //     }
+  //   });
+  // }
 }
