@@ -68,7 +68,7 @@ export class FileUploadComponent {
           if (this.options.isAdminPage) {
             this.alertifyService.message(message, {
               dismissOthers: true,
-              messageType: MessageType.Success,
+              messageType: MessageType.Error,
               position: Position.TopRight,
             });
           } else {
