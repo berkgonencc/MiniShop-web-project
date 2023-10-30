@@ -26,6 +26,9 @@
     <None Remove="Repositories\Customer\" />
     <None Remove="Repositories\Order\" />
     <None Remove="Repositories\Product\" />
+    <None Remove="Repositories\File\" />
+    <None Remove="Repositories\InvoiceFile\" />
+    <None Remove="Repositories\ProductImageFile\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contexts\" />
@@ -33,5 +36,8 @@
     <Folder Include="Repositories\Customer\" />
     <Folder Include="Repositories\Order\" />
     <Folder Include="Repositories\Product\" />
+    <Folder Include="Repositories\File\" />
+    <Folder Include="Repositories\InvoiceFile\" />
+    <Folder Include="Repositories\ProductImageFile\" />
   </ItemGroup>
 </Project>

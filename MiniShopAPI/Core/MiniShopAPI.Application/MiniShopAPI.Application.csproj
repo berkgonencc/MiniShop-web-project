@@ -19,7 +19,13 @@
     <None Remove="Validators\" />
     <None Remove="Validators\Products\" />
     <None Remove="RequestParameters\" />
-    <None Remove="Services\" />
+    <None Remove="Repositories\File\" />
+    <None Remove="Repositories\InvoiceFile\" />
+    <None Remove="Repositories\ProductImageFile\" />
+    <None Remove="Abstractions\" />
+    <None Remove="Abstractions\Storage\" />
+    <None Remove="Abstractions\Storage\Local\" />
+    <None Remove="Abstractions\Storage\Azure\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -31,7 +37,13 @@
     <Folder Include="Validators\" />
     <Folder Include="Validators\Products\" />
     <Folder Include="RequestParameters\" />
-    <Folder Include="Services\" />
+    <Folder Include="Repositories\File\" />
+    <Folder Include="Repositories\InvoiceFile\" />
+    <Folder Include="Repositories\ProductImageFile\" />
+    <Folder Include="Abstractions\" />
+    <Folder Include="Abstractions\Storage\" />
+    <Folder Include="Abstractions\Storage\Local\" />
+    <Folder Include="Abstractions\Storage\Azure\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />

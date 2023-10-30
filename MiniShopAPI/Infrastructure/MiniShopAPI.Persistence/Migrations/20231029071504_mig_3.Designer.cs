@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniShopAPI.Persistence.Contexts;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MiniShopAPI.Persistence.Migrations
 {
     [DbContext(typeof(MiniShopAPIDbContext))]
-    partial class MiniShopAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231029071504_mig_3")]
+    partial class mig_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,9 +62,6 @@ namespace MiniShopAPI.Persistence.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Path")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Storage")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

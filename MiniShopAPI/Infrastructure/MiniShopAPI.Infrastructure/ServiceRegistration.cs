@@ -1,16 +1,39 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using MiniShopAPI.Application.Services;
-using MiniShopAPI.Infrastructure.Services;
+﻿using Microsoft.Extensions.DependencyInjection;
+using MiniShopAPI.Application.Abstractions.Storage;
+using MiniShopAPI.Infrastructure.Enums;
+using MiniShopAPI.Infrastructure.Services.Storage;
+using MiniShopAPI.Infrastructure.Services.Storage.Azure;
+using MiniShopAPI.Infrastructure.Services.Storage.Local;
 
 namespace MiniShopAPI.Infrastructure
 {
-	public static class ServiceRegistration
-	{
-		public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
-		{
-			serviceCollection.AddScoped<IFileService, FileService>();
-		}
-	}
+    public static class ServiceRegistration
+    {
+        public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddScoped<IStorageService, StorageService>();
+        }
+
+        public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : Storage, IStorage
+        {
+            serviceCollection.AddScoped<IStorage, T>();
+        }
+
+        public static void AddStorage(this IServiceCollection serviceCollection, StorageType storageType)
+        {
+            switch (storageType)
+            {
+                case StorageType.Local:
+                    serviceCollection.AddScoped<IStorage, LocalStorage>();
+                    break;
+                case StorageType.Azure:
+                    serviceCollection.AddScoped<IStorage, AzureStorage>();
+                    break;
+                default:
+                    serviceCollection.AddScoped<IStorage, LocalStorage>();
+                    break;
+            }
+        }
+    }
 }
 

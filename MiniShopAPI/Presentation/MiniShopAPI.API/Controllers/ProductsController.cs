@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MiniShopAPI.Application.Abstractions.Storage;
 using MiniShopAPI.Application.Repositories;
 using MiniShopAPI.Application.RequestParameters;
-using MiniShopAPI.Application.Services;
 using MiniShopAPI.Application.ViewModels.Products;
 using MiniShopAPI.Domain.Entities;
 
@@ -19,14 +19,26 @@ namespace MiniShopAPI.API.Controllers
         readonly private IProductWriteRepository _productWriteRepository;
         readonly private IProductReadRepository _productReadRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        readonly IFileService _fileService;
+        readonly IFileWriteRepository _fileWriteRepository;
+        readonly IFileReadRepository _fileReadRepository;
+        readonly IProductImageFileReadRepository _productImageFileReadRepository;
+        readonly IProductImageFileWriteRepository _productImageFileWriteRepository;
+        readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
+        readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;
+        readonly IStorageService _storageService;
 
-        public ProductsController(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository, IWebHostEnvironment webHostEnvironment, IFileService fileService)
+        public ProductsController(IProductWriteRepository productWriteRepository, IProductReadRepository productReadRepository, IWebHostEnvironment webHostEnvironment, IFileWriteRepository fileWriteRepository, IFileReadRepository fileReadRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IStorageService storageService)
         {
             _productWriteRepository = productWriteRepository;
             _productReadRepository = productReadRepository;
             _webHostEnvironment = webHostEnvironment;
-            _fileService = fileService;
+            _fileWriteRepository = fileWriteRepository;
+            _fileReadRepository = fileReadRepository;
+            _productImageFileReadRepository = productImageFileReadRepository;
+            _productImageFileWriteRepository = productImageFileWriteRepository;
+            _invoiceFileReadRepository = invoiceFileReadRepository;
+            _invoiceFileWriteRepository = invoiceFileWriteRepository;
+            _storageService = storageService;
         }
 
         [HttpGet]
@@ -91,10 +103,31 @@ namespace MiniShopAPI.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Upload()
         {
-            //wwwroot/resource/product-images
-            await _fileService.UploadAsync("resource/product-images",Request.Form.Files);
+
+            var datas = await _storageService.UploadAsync("files", Request.Form.Files);
+            if (datas == null)
+            {
+                // Handle the case where _storageService.UploadAsync returned null (log an error, return an error response, etc.)
+                return BadRequest("Error while uploading files.");
+            }
+
+            var productImageFiles = datas.Select(d => new ProductImageFile
+            {
+                FileName = d.fileName,
+                Path = d.pathOrContainerName,
+                Storage = _storageService.StorageName
+            }).ToList();
+
+            if (productImageFiles != null && productImageFiles.Any())
+            {
+                await _productImageFileWriteRepository.AddRangeAsync(productImageFiles);
+                await _productImageFileWriteRepository.SaveAsync();
+            }
+
             return Ok();
+
         }
+
     }
 
 }
