@@ -1,4 +1,5 @@
 ﻿using FluentValidation.AspNetCore;
+using MiniShopAPI.Application;
 using MiniShopAPI.Application.Validators.Products;
 using MiniShopAPI.Infrastructure;
 using MiniShopAPI.Infrastructure.Filters;
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
-
+builder.Services.AddApplicationServices();
 //builder.Services.AddStorage<LocalStorage>();
 builder.Services.AddStorage<AzureStorage>();
 
