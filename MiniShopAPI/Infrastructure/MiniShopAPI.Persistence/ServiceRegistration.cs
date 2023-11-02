@@ -4,6 +4,7 @@ using MiniShopAPI.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using MiniShopAPI.Persistence.Repositories;
 using MiniShopAPI.Application.Repositories;
+using MiniShopAPI.Domain.Entities.Identity;
 
 namespace MiniShopAPI.Persistence
 {
@@ -12,6 +13,15 @@ namespace MiniShopAPI.Persistence
 		public static void AddPersistenceServices(this IServiceCollection services)
 		{
 			services.AddDbContext<MiniShopAPIDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+            }).AddEntityFrameworkStores<MiniShopAPIDbContext>();
+
 			services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();

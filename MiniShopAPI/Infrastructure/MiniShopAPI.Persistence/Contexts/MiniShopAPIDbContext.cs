@@ -1,11 +1,13 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MiniShopAPI.Domain.Entities;
 using MiniShopAPI.Domain.Entities.Common;
+using MiniShopAPI.Domain.Entities.Identity;
 
 namespace MiniShopAPI.Persistence.Contexts
 {
-    public class MiniShopAPIDbContext : DbContext
+    public class MiniShopAPIDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public MiniShopAPIDbContext(DbContextOptions options) : base(options)
         {
