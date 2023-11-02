@@ -44,6 +44,7 @@
     <None Remove="Features\Commands\CreateUser\CreateUser\" />
     <None Remove="Features\Commands\AppUser\" />
     <None Remove="Exceptions\" />
+    <None Remove="Features\Commands\LoginUser\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -80,6 +81,7 @@
     <Folder Include="Features\Commands\AppUser\CreateUser\" />
     <Folder Include="Features\Commands\AppUser\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Features\Commands\LoginUser\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />

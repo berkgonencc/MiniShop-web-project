@@ -1,15 +1,14 @@
-<div class="row">
-    <div class="col-md-3"></div>
+<div class="d-flex justify-content-center">
     <div class="col-md-6">
       <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
         <div class="form-group">
-          <label for="fullName">Ad Soyad</label>
+          <label for="fullName">Full Name</label>
           <input type="text" formControlName="fullName" class="form-control" id="fullName" placeholder="Ad Soyad" [ngClass]="{'is-invalid': submitted && component.fullName.errors}">
           <small class="form-text text-muted invalid-feedback" *ngIf="submitted && component.fullName.errors?.required">Lütfen ad soyadı boş geçmeyiniz.</small>
           <small class="form-text text-muted invalid-feedback" *ngIf="submitted && (component.fullName.errors?.maxlength || component.fullName.errors?.minlength)">Lütfen ad soyadı 3 ile 50 karakter arasında yazınız.</small>
         </div>
         <div class="form-group">
-          <label for="userName">Kullanıcı Adı</label>
+          <label for="userName">Username</label>
           <input type="text" formControlName="userName" class="form-control" id="userName" [ngClass]="{'is-invalid': submitted && component.userName.errors}" placeholder="Kullanıcı Adı">
           <small class="form-text text-muted invalid-feedback" *ngIf="submitted && component.userName.errors?.required">Lütfen kullanıcı adını boş geçmeyiniz.</small>
         </div>
@@ -20,19 +19,18 @@
           <small class="form-text text-muted invalid-feedback" *ngIf="submitted && component.email.errors?.email">Lütfen emaili düzgün giriniz.</small>
         </div>
         <div class="form-group">
-          <label for="password">Şifre</label>
+          <label for="password">Password</label>
           <input type="password" formControlName="password" class="form-control" id="password" placeholder="Şifre" [ngClass]="{'is-invalid': submitted && component.password.errors}">
         </div>
         <div class="form-group">
-          <label for="confirmPassword">Şifre Tekrar</label>
+          <label for="confirmPassword">Confirm Password</label>
           <input type="password" formControlName="confirmPassword" class="form-control" id="confirmPassword" placeholder="Şifre Tekrar" [ngClass]="{'is-invalid': submitted && component.confirmPassword.errors}">
           <small *ngIf="submitted && frm.hasError('notSame')">Lütfen şifreyi doğrulayınız.</small>
         </div>
         <br />
-        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+        <button type="submit" class="btn btn-primary">Register</button>
       </form>
   
     </div>
-    <div class="col-md-3"></div>
   </div>
   

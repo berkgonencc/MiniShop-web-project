@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BasketsModule } from './baskets/baskets.module';
 import { ProductsModule } from './products/products.module';
 import { HomeModule } from './home/home.module';
-import { RegisterComponent } from './register/register.component';
 import { RegisterModule } from './register/register.module';
+import { LoginModule } from './login/login.module';
 
 
 
@@ -17,7 +17,8 @@ import { RegisterModule } from './register/register.module';
     BasketsModule,
     ProductsModule,
     HomeModule,
-    RegisterModule
+    RegisterModule,
+    LoginModule
   ]
 })
 export class ComponentsModule { }
