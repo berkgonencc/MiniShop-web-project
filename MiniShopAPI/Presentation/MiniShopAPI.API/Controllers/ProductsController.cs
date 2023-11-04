@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MiniShopAPI.Application.Features.Commands.Product.CreateProduct;
 using MiniShopAPI.Application.Features.Commands.Product.RemoveProduct;
@@ -14,6 +15,7 @@ namespace MiniShopAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class ProductsController : ControllerBase
     {
         readonly IMediator _mediator;

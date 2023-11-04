@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MiniShopAPI.Application.Abstractions.Storage;
+using MiniShopAPI.Application.Abstractions.Token;
 using MiniShopAPI.Infrastructure.Enums;
 using MiniShopAPI.Infrastructure.Services.Storage;
 using MiniShopAPI.Infrastructure.Services.Storage.Azure;
 using MiniShopAPI.Infrastructure.Services.Storage.Local;
+using MiniShopAPI.Infrastructure.Services.Token;
 
 namespace MiniShopAPI.Infrastructure
 {
@@ -12,6 +14,7 @@ namespace MiniShopAPI.Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IStorageService, StorageService>();
+            serviceCollection.AddScoped<ITokenHandler,TokenHandler>();
         }
 
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : Storage, IStorage

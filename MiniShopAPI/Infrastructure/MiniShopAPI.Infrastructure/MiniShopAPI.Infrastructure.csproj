@@ -16,6 +16,7 @@
     <None Remove="Services\Storage\" />
     <None Remove="Services\Storage\Local\" />
     <None Remove="Services\Storage\Azure\" />
+    <None Remove="Services\Token\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filters\" />
@@ -24,8 +25,10 @@
     <Folder Include="Services\Storage\" />
     <Folder Include="Services\Storage\Local\" />
     <Folder Include="Services\Storage\Azure\" />
+    <Folder Include="Services\Token\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.18.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
   </ItemGroup>
 </Project>

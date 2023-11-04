@@ -1,4 +1,7 @@
-﻿using FluentValidation.AspNetCore;
+﻿using System.Text;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using MiniShopAPI.Application;
 using MiniShopAPI.Application.Validators.Products;
 using MiniShopAPI.Infrastructure;
@@ -27,6 +30,22 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("Admin", options =>
+    {
+        options.TokenValidationParameters = new()
+        {
+            ValidateAudience = true, // www.bilmemne.com - kimin kullanacağını belirler.
+            ValidateIssuer = true, // www.myapi.com - kimin dağıttığını ifade eder.
+            ValidateLifetime = true, // Oluşturulan token değerinin süresini kontrol edecek olan doğrulamadır.
+            ValidateIssuerSigningKey = true, // Üretilecek token değerinin uygulamamıza ait bir değer olduğunu ifade eden security key verisinin doğrulanmasıdır.
+
+            ValidAudience = builder.Configuration["Token:Audience"],
+            ValidIssuer = builder.Configuration["Token:Issuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"]))
+        };
+    });
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -38,6 +57,8 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseCors();
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
