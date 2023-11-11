@@ -43,6 +43,7 @@
                 class="nav-link active"
                 aria-current="page"
                 routerLink="register"
+                *ngIf="!authService.isAuthenticated"
                 >Register</a
               >
             </li>
@@ -51,7 +52,18 @@
                 class="nav-link active"
                 aria-current="page"
                 routerLink="login"
+                *ngIf="!authService.isAuthenticated"
                 >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                style="color: red; cursor: pointer;"
+                (click)="signOut()"
+                *ngIf="authService.isAuthenticated"
+                >Logout</a
               >
             </li>
             <li>
@@ -59,10 +71,11 @@
                 routerLink="admin"
                 class="btn btn-outline-success"
                 type="submit"
+                *ngIf="authService.isAuthenticated"
                 >Admin Panel</a
               >
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -83,9 +96,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
+            </li> -->
           </ul>
-          <form class="d-flex" role="search">
+          <!-- <form class="d-flex" role="search">
             <input
               class="form-control me-2"
               type="search"
@@ -95,7 +108,7 @@
             <button class="btn btn-outline-primary" type="submit">
               Search
             </button>
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>
