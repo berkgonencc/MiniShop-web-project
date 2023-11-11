@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using MiniShopAPI.Persistence.Repositories;
 using MiniShopAPI.Application.Repositories;
 using MiniShopAPI.Domain.Entities.Identity;
+using MiniShopAPI.Persistence.Services;
+using MiniShopAPI.Application.Abstractions.Services;
 
 namespace MiniShopAPI.Persistence
 {
@@ -35,7 +37,7 @@ namespace MiniShopAPI.Persistence
             services.AddScoped<IInvoiceFileReadRepository, InvoiceFileReadRepository>();
             services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
 
-
+            services.AddScoped<IUserService, UserService>();
 
 
         }

@@ -1,20 +1,23 @@
 ﻿using System;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using MiniShopAPI.Application.Exceptions;
+using MiniShopAPI.Application.Abstractions.Services;
+using MiniShopAPI.Application.DTOs.User;
+using MiniShopAPI.Application.Features.Commands.AppUser.CreateUser;
+using MiniShopAPI.Domain.Entities.Identity;
 
-namespace MiniShopAPI.Application.Features.Commands.AppUser.CreateUser
+namespace MiniShopAPI.Persistence.Services
 {
-    public class CreateUserCommandHandle : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
+    public class UserService : IUserService
     {
         readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
 
-        public CreateUserCommandHandle(UserManager<Domain.Entities.Identity.AppUser> userManager)
+        public UserService(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
+        public async Task<CreateUserResponse> CreateAsync(CreateUser request)
         {
             IdentityResult result = await _userManager.CreateAsync(new()
             {
@@ -25,7 +28,7 @@ namespace MiniShopAPI.Application.Features.Commands.AppUser.CreateUser
 
             }, request.Password);
 
-            CreateUserCommandResponse response = new() { Succeeded = result.Succeeded };
+            CreateUserResponse response = new() { Succeeded = result.Succeeded };
 
             if (result.Succeeded)
             {
@@ -39,7 +42,6 @@ namespace MiniShopAPI.Application.Features.Commands.AppUser.CreateUser
                 }
             }
             return response;
-            //throw new UserCreateFailedException();
         }
     }
 }
