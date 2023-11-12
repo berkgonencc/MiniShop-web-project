@@ -3,6 +3,8 @@ using MiniShopAPI.Application.Abstractions.Token;
 using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using MiniShopAPI.Domain.Entities.Identity;
 
 namespace MiniShopAPI.Infrastructure.Services.Token
 {
@@ -15,7 +17,7 @@ namespace MiniShopAPI.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public Application.DTOs.Token CreateAccessToken(int minute)
+        public Application.DTOs.Token CreateAccessToken(int minute, AppUser user)
         {
             Application.DTOs.Token token = new();
 
@@ -32,7 +34,8 @@ namespace MiniShopAPI.Infrastructure.Services.Token
                 issuer: _configuration["Token:Issuer"],
                 expires: token.Expiration,
                 notBefore: DateTime.UtcNow,
-                signingCredentials: signingCredentials
+                signingCredentials: signingCredentials,
+                claims: new List<Claim> { new(ClaimTypes.Name, user.UserName)}
                 );
 
             //Token oluşturucu sınıfından bir örnek alalım.

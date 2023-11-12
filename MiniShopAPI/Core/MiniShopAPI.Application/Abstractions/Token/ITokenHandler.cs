@@ -1,8 +1,10 @@
-﻿namespace MiniShopAPI.Application.Abstractions.Token
+﻿using MiniShopAPI.Domain.Entities.Identity;
+
+namespace MiniShopAPI.Application.Abstractions.Token
 {
     public interface ITokenHandler
     {
-        DTOs.Token CreateAccessToken(int minute);
+        DTOs.Token CreateAccessToken(int minute, AppUser user);
     }
 }
 

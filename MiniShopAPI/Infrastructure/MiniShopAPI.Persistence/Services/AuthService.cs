@@ -36,7 +36,7 @@ namespace MiniShopAPI.Persistence.Services
             // Authentication Successfull!
             if (result.Succeeded)
             {
-                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime);
+                Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime, user);
                 return token;
 
             }
