@@ -23,7 +23,7 @@ namespace MiniShopAPI.Application.Features.Commands.LoginUser
             return new LoginUserSuccessCommandResponse()
             {
                 Token = token
-            }
+            };
         }
     }
 }
