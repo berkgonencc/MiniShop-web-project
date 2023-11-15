@@ -41,7 +41,7 @@ The project follows the Onion Architecture (Clean Architecture) to promote maint
 * The layer where users interact with the application.
 * Can include Web App, Web API, MVC, etc.
 
-### SignalR and JWT Token
+### SignalR and JWT Token
 * SignalR
   - Real-time communication is achieved using SignalR.
   - SignalR hubs are implemented in the infrastructure layer.
