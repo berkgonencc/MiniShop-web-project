@@ -45,6 +45,7 @@ The project follows the Onion Architecture (Clean Architecture) to promote maint
 Cross-Origin Resource Sharing (CORS) is crucial when the client application is running on a different origin (protocol, host, or port) than the server. Browsers enforce the Same-Origin Policy to prevent unauthorized access. The CORS policy is applied to ensure that requests from the client are permitted based on the target site's policies.
 
 ### SignalR and JWT Token
+
 * SignalR
   - Real-time communication is achieved using SignalR.
   - SignalR hubs are implemented in the infrastructure layer.
