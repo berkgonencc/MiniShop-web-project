@@ -2,6 +2,7 @@
 using System.Text;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.IdentityModel.Tokens;
 using MiniShopAPI.API.Configurations.ColumnWriters;
 using MiniShopAPI.Application;
@@ -42,10 +43,21 @@ Logger log = new LoggerConfiguration()
         {"log_event", new LogEventSerializedColumnWriter() },
         {"user_name", new UsernameColumnWriter()},
     })
+    .WriteTo.Seq(builder.Configuration["Seq:ServerURL"])
     .Enrich.FromLogContext()
     .MinimumLevel.Information()
     .CreateLogger();
 builder.Host.UseSerilog(log);
+
+builder.Services.AddHttpLogging(logging =>
+{
+    logging.LoggingFields = HttpLoggingFields.All;
+    logging.RequestHeaders.Add("sec-ch-ua");
+    logging.MediaTypeOptions.AddText("application/javascript");
+    logging.RequestBodyLogLimit = 4096;
+    logging.ResponseBodyLogLimit = 4096;
+
+});
 
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
     .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<CreateProductValidator>())
@@ -83,8 +95,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseSerilogRequestLogging();
 app.UseStaticFiles();
+
+app.UseSerilogRequestLogging();
+app.UseHttpLogging();
+
 app.UseCors();
 app.UseHttpsRedirection();
 
