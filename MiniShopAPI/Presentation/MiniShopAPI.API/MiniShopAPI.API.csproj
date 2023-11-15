@@ -37,6 +37,7 @@
     <None Remove="Controllers\" />
     <None Remove="Configurations\" />
     <None Remove="Configurations\ColumnWriters\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -44,6 +45,7 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Configurations\" />
     <Folder Include="Configurations\ColumnWriters\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
