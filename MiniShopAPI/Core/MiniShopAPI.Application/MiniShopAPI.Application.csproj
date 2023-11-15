@@ -50,6 +50,7 @@
     <None Remove="Abstractions\Services\" />
     <None Remove="DTOs\User\" />
     <None Remove="Abstractions\Services\Authentications\" />
+    <None Remove="Abstractions\Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -92,6 +93,7 @@
     <Folder Include="Abstractions\Services\" />
     <Folder Include="DTOs\User\" />
     <Folder Include="Abstractions\Services\Authentications\" />
+    <Folder Include="Abstractions\Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
