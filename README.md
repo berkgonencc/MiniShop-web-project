@@ -41,11 +41,7 @@ The project follows the Onion Architecture (Clean Architecture) to promote maint
 * The layer where users interact with the application.
 * Can include Web App, Web API, MVC, etc.
 
-### CORS Policy
-Cross-Origin Resource Sharing (CORS) is crucial when the client application is running on a different origin (protocol, host, or port) than the server. Browsers enforce the Same-Origin Policy to prevent unauthorized access. The CORS policy is applied to ensure that requests from the client are permitted based on the target site's policies.
-
 ### SignalR and JWT Token
-
 * SignalR
   - Real-time communication is achieved using SignalR.
   - SignalR hubs are implemented in the infrastructure layer.
@@ -53,6 +49,11 @@ Cross-Origin Resource Sharing (CORS) is crucial when the client application is r
   - JSON Web Tokens (JWT) are used for authentication.
   - Users receive a JWT token upon successful authentication.
   - The token is included in the headers of subsequent requests for authorization.
+
+### CORS Policy
+Cross-Origin Resource Sharing (CORS) is crucial when the client application is running on a different origin (protocol, host, or port) than the server. Browsers enforce the Same-Origin Policy to prevent unauthorized access. The CORS policy is applied to ensure that requests from the client are permitted based on the target site's policies.
+
+
 
 # Getting Started
 Follow these steps to set up and run the MiniShop web application:
