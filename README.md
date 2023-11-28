@@ -59,7 +59,7 @@ Cross-Origin Resource Sharing (CORS) is crucial when the client application is r
 Follow these steps to set up and run the MiniShop web application:
 1) Clone the Repository:
    ```bash
-   git clone https://github.com/berkgonencc/minishop.git 
+   git clone https://github.com/berkgonencc/MiniShop-web-project.git 
 
 2) Build the Docker Container:
    ```bash
